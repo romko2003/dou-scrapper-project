@@ -1,55 +1,121 @@
-# dou-scrapper-project
-This project requires a combination of Web Scraping &amp; Data Analysis skills.  The idea of it is to help you to understand the most demanded technologies on the tech market right now. To become a Python Developer you need to know Django/Flask, Web, PostgreSQL. Even these technologies may not be so popular in the recent moment you search the job.
+# Python Technologies Statistics (DOU.ua)
 
-## Install dependencies
+This project combines **Web Scraping** and **Data Analysis** to analyze the most in-demand technologies in Python job vacancies on **dou.ua**.
 
+The goal is to help Python developers understand which technologies are currently most required on the job market, so they can prioritize what to learn and prepare better for interviews.
+
+---
+
+## 🚀 Project Overview
+
+The project:
+- Scrapes public Python job vacancies from dou.ua  
+- Extracts technologies mentioned in job descriptions  
+- Counts how frequently each technology appears  
+- Visualizes popularity statistics using charts  
+- Stores historical results to track trends over time  
+
+---
+
+## 🧱 Project Architecture
+
+The project is split into **two independent parts** (Single Responsibility Principle):
+
+### 1️⃣ Scraping Module
+- Collects vacancy links
+- Downloads job descriptions
+- Saves raw vacancy data into JSON
+
+### 2️⃣ Data Analysis Module
+- Loads stored vacancy data
+- Analyzes technology mentions
+- Builds statistics & charts
+- Saves visualization results
+
+---
+
+## 🛠 Technologies Used
+
+- Python  
+- Requests  
+- BeautifulSoup  
+- Pandas  
+- Matplotlib  
+- SQLite (optional storage)  
+- Asyncio (optional performance upgrade)  
+- NLP tools (optional: nltk, wordcloud)  
+
+---
+
+## 📊 Example Output
+
+The project generates charts showing the **most demanded technologies**:
+
+![Technology Popularity Chart](charts/tech_popularity.png)
+
+---
+
+## ⚙️ How to Run the Project
+
+### 1. Clone the repository
 ```bash
-python -m pip install -r requirements.txt
-```
+git clone https://github.com/YOUR_USERNAME/py-dou-tech-stats.git
+cd py-dou-tech-stats
+2. Install dependencies
+pip install -r requirements.txt
+3. Run the scraper & analysis
+python main.py
+📁 Project Structure
+py-dou-tech-stats/
+│
+├── scraper/           # Scraping logic
+├── analysis/          # Data processing & charts
+├── data/              # Raw scraped vacancies
+├── charts/            # Generated visualizations
+├── config.py          # Technology list & settings
+├── main.py            # Project entry point
+└── README.md
+📌 Configuration
+You can modify tracked technologies in config.py:
 
-## Diagrams (examples)
+TECHNOLOGIES = [
+    "Python", "Django", "Flask", "FastAPI",
+    "PostgreSQL", "Docker", "AWS",
+    "Redis", "Celery", "Pandas"
+]
+📈 Additional Features (Optional Enhancements)
+Async scraping for performance
 
-### Scraping → analysis → chart pipeline
+NLP-based technology extraction (no static config)
 
-```mermaid
-flowchart TD
-  A[main.py] --> B[run_scraping()]
-  B --> C[scraper.get_vacancy_links()]
-  C --> D[scraper.parse_vacancy()]
-  D --> E[data/raw_vacancies.json]
-  A --> F[analyze()]
-  F --> G[Counter: tech -> count]
-  A --> H[plot(counter)]
-  H --> I[charts/tech_popularity.png]
-```
+WordCloud visualization
 
-### Runtime sequence (happy path)
+Experience level segmentation (Junior / Middle / Senior)
 
-```mermaid
-sequenceDiagram
-  participant Main as main.py
-  participant Scrape as run_scraping()
-  participant DOU as jobs.dou.ua
-  participant Analyze as analyze()
-  participant Plot as plot()
+Market trend tracking over time
 
-  Main->>Scrape: start
-  Scrape->>DOU: fetch vacancy list pages
-  Scrape->>DOU: fetch each vacancy page
-  Scrape-->>Main: raw JSON written
-  Main->>Analyze: count technologies
-  Analyze-->>Main: Counter
-  Main->>Plot: render chart
-  Plot-->>Main: tech_popularity.png saved
-```
+Salary & popularity correlation analysis
 
-### Data artifact (what gets saved)
+⚠️ Disclaimer
+Only public job data is scraped
 
-```mermaid
-classDiagram
-  class Vacancy {
-    +string title
-    +string url
-    +string description
-  }
-```
+No authentication is used
+
+No private user data is collected
+
+Scraping respects legal and ethical standards
+
+👨‍💻 Author
+Roman Azhniuk
+Mate Academy — Python Track
+
+⭐ Why This Project Matters
+This project helps developers:
+
+Understand real job market demand
+
+Make informed learning decisions
+
+Build strong portfolio projects
+
+Gain real-world scraping & analytics experience
