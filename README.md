@@ -1,6 +1,5 @@
-# Python Technologies Statistics (DOU.ua)
-
-This project combines **Web Scraping** and **Data Analysis** to analyze the most in-demand technologies in Python job vacancies on **dou.ua**.
+# dou-scrapper-project
+This project requires a combination of Web Scraping & Data Analysis skills. The idea is to help you understand the most demanded technologies on the tech market right now. To become a Python Developer you need to know Django/Flask, Web, PostgreSQL. Even these technologies may not be so popular at the moment you search for a job.
 
 The goal is to help Python developers understand which technologies are currently most required on the job market, so they can prioritize what to learn and prepare better for interviews.
 
@@ -59,32 +58,41 @@ The project generates charts showing the **most demanded technologies**:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/py-dou-tech-stats.git
-cd py-dou-tech-stats
-2. Install dependencies
-pip install -r requirements.txt
-3. Run the scraper & analysis
-python main.py
-📁 Project Structure
-py-dou-tech-stats/
-│
-├── scraper/           # Scraping logic
-├── analysis/          # Data processing & charts
-├── data/              # Raw scraped vacancies
-├── charts/            # Generated visualizations
-├── config.py          # Technology list & settings
-├── main.py            # Project entry point
-└── README.md
-📌 Configuration
-You can modify tracked technologies in config.py:
+git clone <your-repo-url>
+cd dou-scrapper-project
+```
 
-TECHNOLOGIES = [
-    "Python", "Django", "Flask", "FastAPI",
-    "PostgreSQL", "Docker", "AWS",
-    "Redis", "Celery", "Pandas"
-]
-📈 Additional Features (Optional Enhancements)
-Async scraping for performance
+### 2. (Recommended) Create and activate a virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # on macOS / Linux
+# .venv\Scripts\activate   # on Windows (PowerShell / cmd)
+```
+
+### 3. Install dependencies
+
+Make sure you have Python 3.10+ installed, then run:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### 4. Run the scraper + analysis + charts
+
+```bash
+python main.py
+```
+
+What happens:
+
+- vacancies are scraped from `jobs.dou.ua`
+- raw data is saved to the `data` folder
+- technologies are counted
+- a popularity chart image is generated in the `charts` folder
+
+## Diagrams (examples)
 
 NLP-based technology extraction (no static config)
 
