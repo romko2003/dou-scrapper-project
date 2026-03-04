@@ -94,6 +94,36 @@ What happens:
 
 ## Diagrams (examples)
 
+High-level architecture:
+
+```mermaid
+flowchart LR
+    A[jobs.dou.ua<br/>Python vacancies] --> B[Scraper module]
+    B --> C[data/raw_vacancies.json]
+
+    C --> D[Analysis module]
+    D --> E[Tech frequency stats]
+    E --> F[charts/tech_popularity.png]
+```
+
+Detailed end-to-end flow:
+
+```mermaid
+flowchart TD
+    S[Start] --> C1[Collect vacancy list pages]
+    C1 --> C2[Extract vacancy links]
+    C2 --> C3[Download each vacancy page]
+    C3 --> C4[Parse title + description]
+    C4 --> S1[Save to JSON: data/raw_vacancies.json]
+
+    S1 --> A1[Load JSON data]
+    A1 --> A2[Scan descriptions for TECHNOLOGIES]
+    A2 --> A3[Build Counter of tech mentions]
+    A3 --> A4[Plot horizontal bar chart]
+    A4 --> O1[Save charts/tech_popularity.png]
+    O1 --> End[End]
+```
+
 NLP-based technology extraction (no static config)
 
 WordCloud visualization
